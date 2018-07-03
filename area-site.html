@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Polygon Area</title>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+   <style>
+      body {
+        background-color: #1a161e;
+        font-family: 'Raleway', sans-serif;;
+      }
+      h1 {
+        color: #6a8192;
+        text-align: center;
+      }
+      h2 {
+        color: #6a8192;
+        text-align: center;
+      }
+      h3 {
+        color: #6a8192;
+        text-align: center;
+      }
+      h5 {
+        color: #6a8192;
+        text-align: center;
+      }
+      form {
+        color: #6a8192;
+        text-align: center;
+      }
+  </style>
+ </head>
+
+ <body>
+   {{if .Success}}
+   	<h2><u>Result</u></h2>
+    <h5>Small inaccuracies may occur due to the algorithm used, but most outputs should be accurate to the billionths place</h5>
+    {{range .Area_nums}}
+        <h2>{{.Message}} {{.Ans}}</h2>
+    {{end}}
+   {{else}}
+   	<h2><u>Variables</u></h2>
+   	<form method="POST">
+   		<label>Number of Sides</label><br />
+   		<input type="number" step="0.001" name="SIDES"><br />
+      <label>Length of Side:</label><br />
+   		<input type="number" step="0.001" name="LENGTH"><br />
+   		<input type="submit">
+   	</form>
+   {{end}}
+ </body>
+</html>
