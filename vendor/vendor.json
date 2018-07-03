@@ -1,16 +1,6 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [
-		{
-			"path": "github.com/vrowello/reg-area/apothem"
-		},
-		{
-			"path": "github.com/vrowello/reg-area/area"
-		},
-		{
-			"path": "github.com/vrowello/reg-area/perimeter"
-		}
-	],
+	"package": [],
 	"rootPath": "github.com/vrowello/area-site"
 }

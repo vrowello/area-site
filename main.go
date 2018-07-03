@@ -7,9 +7,7 @@ import (
   "fmt"
   "os"
   "log"
-  "github.com/vrowello/reg-area/apothem"
-  "github.com/vrowello/reg-area/area"
-  "github.com/vrowello/reg-area/perimeter"
+  "math"
 )
 
 var (
@@ -54,10 +52,10 @@ func server(w http.ResponseWriter, r *http.Request) {
   a := make(chan float64)
   p := make(chan float64)
 
-  go apothem.Apothem(sides, length, a)
-  go perimeter.Perimeter(sides, length, p)
+  go apothem(sides, length, a)
+  go perimeter(sides, length, p)
 
-  result = area.Area(<-a, <-p)
+  result = area(<-a, <-p)
 
   output := AreaData{
     Area_nums: []Area{
@@ -77,4 +75,17 @@ func GetPort() string {
  		fmt.Println("INFO: No PORT environment variable detected, defaulting to " + port)
  	}
  	return ":" + port
+}
+
+func apothem(n float64, l float64, a chan float64) {
+	angle := ((180 - (360 / n)) / 2) * 0.01745329252 //finds the angle in degrees and converts to radians
+	a <- math.Tan(angle) * (l / 2)
+}
+
+func area(apth float64, prmtr float64) float64 {
+	return ((apth * prmtr) / 2)
+}
+
+func perimeter(n float64, l float64, p chan float64) {
+	p <- n * l
 }
