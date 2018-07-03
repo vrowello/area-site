@@ -3,7 +3,7 @@
 	"ignore": "test",
 	"package": [
 		{
-			"path": "github.com/vrowello/reg-area/apothem",
+			"path": "github.com/vrowello/reg-area/apothem"
 		},
 		{
 			"path": "github.com/vrowello/reg-area/area"
